@@ -1,13 +1,22 @@
 # vite-plugin-vue-autoimportconfigextend
-1. 安装🤨
+
+## 说明😮
+unplugin-auto-import 提供的自动引入太爽了，
+有时候我们想自动引入src下某个目录的模块，
+但又没有比较方便的配置，于是这个插件孕育而生
+
+
+## 使用🙃
+
+1. 安装
 ```
 npm i unplugin-auto-import vite-plugin-vue-autoimportconfigextend
 ```
 
-2. 配置😮
+2. 配置
 
 ```typescript
-// viteConfig.ts
+// vite.config.ts
 ...
 import AutoImport from 'unplugin-auto-import/vite';
 import importsListen, { imports } from "vite-plugin-vue-autoimportconfigextend"
@@ -51,7 +60,7 @@ export interface dirImportOpts {
 
 ```
 
-3. 使用🙃
+3. 使用
 
 ```typescript
 // utils/xxx.ts
