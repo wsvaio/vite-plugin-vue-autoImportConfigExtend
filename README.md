@@ -38,6 +38,16 @@ import importsListen, { imports } from "vite-plugin-vue-autoimportconfigextend"
   ...
 }
 
+// imports config
+export interface dirImportOpts {
+  alias?: string, // 导入的路径别名
+  target: string; // 导入的路径 只能是src目录下的
+  prefix?: string; // 导入文件的前缀过滤
+  suffix?: string; // 导入文件的后缀过滤
+  include?: string[]; // 导入的文件
+  exclude?: string[]; // 不导入的文件
+}
+
 
 ```
 
@@ -79,3 +89,4 @@ export let xxx = "xxx"/()=>{};
 export function xxx() {};
 export default "xxx"/()=>{}; // default的导出会分配该文件名为导出名
 ```
+2. ❗❗❗❗如果有重复的导出名会报错
