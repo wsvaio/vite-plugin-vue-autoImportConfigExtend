@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "declarationDir": "types",
     "outDir": "dist",
-    "target": "ESNEXT",
-    "module": "ESNEXT",
+    "target": "ESNext",
+    "module": "ESNext",
     "removeComments": true,
     "noImplicitAny": false,
     "moduleResolution": "node",

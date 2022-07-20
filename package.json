@@ -1,24 +1,26 @@
 {
   "name": "vite-plugin-vue-autoimportconfigextend",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "unplugin-auto-import/vite配置项扩展",
-  "type": "module",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "files": [
+    "dist",
+    "lib",
+    "types"
+  ],
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./lib/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./types/index.d.ts"
     }
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "npm run build:CommonJS && npm run build:ESNext",
+    "build:ESNext": "tsc -m ESNext  --outDir dist",
+    "build:CommonJS": "tsc -m CommonJS --outDir lib"
   },
   "repository": {
     "type": "git",
