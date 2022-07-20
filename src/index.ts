@@ -74,6 +74,7 @@ export const imports = (...options: (dirImportOpts | PresetName)[]): (ImportsMap
 export default () => {
   return {
     name: "plugin-vue:importsListen",
+    enforce: "post",
     handleHotUpdate({ file, server }) {
       for (const path of paths) file.endsWith(path) && server.restart();
     },
