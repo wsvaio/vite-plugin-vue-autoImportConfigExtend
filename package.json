@@ -1,9 +1,9 @@
 {
   "name": "vite-plugin-vue-autoimportconfigextend",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "unplugin-auto-import/vite配置项扩展",
-  "types": "./dist/index.d.ts",
-  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
+  "main": "./lib/index.js",
   "module": "./dist/index.mjs",
   "files": [
     "dist",
