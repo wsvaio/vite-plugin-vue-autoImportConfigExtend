@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync } from "fs";
 import { ImportNameAlias, ImportsMap, PresetName } from "unplugin-auto-import/types";
-import { Plugin } from "vite";
+// import { Plugin } from "vite";
 
 export interface dirImportOpts {
   alias?: string, // 导入的路径别名
@@ -71,7 +71,7 @@ export const imports = (...options: (dirImportOpts | PresetName)[]): (ImportsMap
 
 
 // 如果修改了需要自动导出的文件，重启服务器（auto-import.d.ts才会更新）
-export default (): Plugin => {
+export default () => {
   return {
     name: "plugin-vue:importsListen",
     handleHotUpdate({ file, server }) {
