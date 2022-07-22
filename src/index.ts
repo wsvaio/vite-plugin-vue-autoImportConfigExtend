@@ -42,11 +42,10 @@ export const imports = (...options: (dirImportOpts | PresetName)[]): (ImportsMap
       const file = readFileSync(path);
       const content = new TextDecoder().decode(file);
       // const regExp = /^export\s+(\w+)\s+([\w\{\}\,\s]+)?\(?/gmsi;
-      const regExp = /^export\s+(\w*)\s*(\{?[\w\,\s]*\}?)[\s\(]/gmsi;
+      const regExp = /^export\s+(\w*)\s*(\{?[\w,\d\s]*\}?)[\s(]/gmsi;
       const matches = content.matchAll(regExp);
       const result: (string | ImportNameAlias)[] = [];
       for (const [, key, name] of matches) {
-
         if (key == "default") {
           const pathSplit = `${target}/${item}`.replace(".ts", "").split("/").reverse();
           const defaultName = pathSplit[0] == "index" ? pathSplit[1] : pathSplit[0];
@@ -54,12 +53,12 @@ export const imports = (...options: (dirImportOpts | PresetName)[]): (ImportsMap
         }
         else if (["const", "let", "function", ""].includes(key)) {
           name.startsWith("{")
-            ? result.push(...name.replaceAll(/[,{}]|default as /g, "").trim().split(/[\s]/))
+            ? result.push(...name.replaceAll(/[,{}]|(default|[\w\d]+) as /g, "").trim().split(/[\s]/))
             : result.push(name.trim());
         }
         else {
           // why was that ?
-          console.log(key, name);
+          console.log(key, name, "🐔");
         }
       }
 
