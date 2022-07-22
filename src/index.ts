@@ -41,7 +41,8 @@ export const imports = (...options: (dirImportOpts | PresetName)[]): (ImportsMap
       paths.push(path);
       const file = readFileSync(path);
       const content = new TextDecoder().decode(file);
-      const regExp = /^export\s+(\w+)\s+([\w\{\}\,\s]+)?\(?/gmsi;
+      // const regExp = /^export\s+(\w+)\s+([\w\{\}\,\s]+)?\(?/gmsi;
+      const regExp = /^export\s+(\w*)\s*(\{?[\w\,\s]*\}?)[\s\(]/gmsi;
       const matches = content.matchAll(regExp);
       const result: (string | ImportNameAlias)[] = [];
       for (const [, key, name] of matches) {
@@ -51,9 +52,9 @@ export const imports = (...options: (dirImportOpts | PresetName)[]): (ImportsMap
           const defaultName = pathSplit[0] == "index" ? pathSplit[1] : pathSplit[0];
           result.push(["default", defaultName]);
         }
-        else if (["const", "let", "function"].includes(key)) {
+        else if (["const", "let", "function", ""].includes(key)) {
           name.startsWith("{")
-            ? result.push(...name.replaceAll(/[,{}]/g, "").trim().split(/[\s]/))
+            ? result.push(...name.replaceAll(/[,{}]|default as /g, "").trim().split(/[\s]/))
             : result.push(name.trim());
         }
         else {

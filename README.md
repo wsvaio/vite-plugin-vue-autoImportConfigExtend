@@ -87,15 +87,15 @@ function handlerClick() {
 ```
 
 ## 注意😱
-1. 不支持文件内导出的其它文件的导出😵；比如：
+1. 不支持文件内导出的其它文件的不具名导出😵；比如：
 ```typescript
 // 不支持
 export * from "xxx"
-export { default as xxx } from "xxx"
 // 支持
 export const xxx = "xxx"/()=>{};
 export let xxx = "xxx"/()=>{};
 export function xxx() {};
 export default "xxx"/()=>{}; // default的导出会分配该文件名为导出名
+export { default as xxx, a, b, c } from "xxx";
 ```
 2. ❗❗❗❗如果有重复的导出名会报错
