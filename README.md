@@ -96,6 +96,6 @@ export const xxx = "xxx"/()=>{};
 export let xxx = "xxx"/()=>{};
 export function xxx() {};
 export default "xxx"/()=>{}; // default的导出会分配该文件名为导出名
-export { default as xxx, a, b, c } from "xxx";
+export { default as xxx, a, b, c as ccc } from "xxx";
 ```
 2. ❗❗❗❗如果有重复的导出名会报错
