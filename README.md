@@ -1,12 +1,13 @@
 # vite-plugin-vue-autoimportconfigextend
 
-## 说明😮
+## 说明
 unplugin-auto-import 提供的自动引入太爽了，
 有时候我们想自动引入src下某个目录的模块，
-但又没有比较方便的配置，于是这个插件孕育而生
+但又没有比较方便的配置，
+你可以安装此插件辅助配置
 
 
-## 使用🙃
+## 使用
 
 1. 安装
 ```
@@ -30,8 +31,8 @@ import importsListen, { imports } from "vite-plugin-vue-autoimportconfigextend"
       dts: true,
       imports: imports(
         "vue", "vue-router", "pinia", "@vueuse/core", "vitest",
-        // src 下 apis 文件夹中 以 index.ts 开头的文件内 所有export自动引入
-        { target: "apis", prefix: "index.ts" },
+        // src 下 apis 文件夹中 index.ts 文件 所有export自动引入
+        { target: "apis", include: ["index.ts"] },
         // src 下 utils 文件夹中 所有直接子ts文件内 所有export自动引入
         { target: "utils" },
       ),
@@ -53,7 +54,7 @@ export interface dirImportOpts {
   target: string; // 导入的路径 只能是src目录下的
   prefix?: string; // 导入文件的前缀过滤
   suffix?: string; // 导入文件的后缀过滤
-  include?: string[]; // 导入的文件
+  include?: string[]; // 导入的文件，空代表所有
   exclude?: string[]; // 不导入的文件
 }
 
@@ -86,8 +87,8 @@ function handlerClick() {
 
 ```
 
-## 注意😱
-1. 不支持文件内导出的其它文件的不具名导出😵；比如：
+## 注意
+1. 不支持文件内导出的其它文件的不具名导出；比如：
 ```typescript
 // 不支持
 export * from "xxx"
