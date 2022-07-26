@@ -50,7 +50,7 @@ import importsListen, { imports } from "vite-plugin-vue-autoimportconfigextend"
 
 // imports config
 export interface dirImportOpts {
-  alias?: string, // 导入的路径别名
+  alias?: string, // src的路径别名，默认@
   target: string; // 导入的路径 只能是src目录下的
   prefix?: string; // 导入文件的前缀过滤
   suffix?: string; // 导入文件的后缀过滤
