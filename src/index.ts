@@ -58,7 +58,7 @@ export const imports = (...options: (dirImportOpts | PresetName)[]): (ImportsMap
         }
         else {
           
-          console.log(key, name, "🐔");
+          console.log("autoImportConfigExtend:", key, name);
         }
       }
 

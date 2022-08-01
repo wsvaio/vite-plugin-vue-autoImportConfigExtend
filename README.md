@@ -52,10 +52,10 @@ import importsListen, { imports } from "vite-plugin-vue-autoimportconfigextend"
 export interface dirImportOpts {
   alias?: string, // src的路径别名，默认@
   target: string; // 导入的路径 只能是src目录下的
-  prefix?: string; // 导入文件的前缀过滤
-  suffix?: string; // 导入文件的后缀过滤
-  include?: string[]; // 导入的文件，空代表所有
-  exclude?: string[]; // 不导入的文件
+  prefix?: string; // 导入文件名的前缀过滤
+  suffix?: string; // 导入文件名的后缀过滤
+  include?: string[]; // 导入的文件名（无视过滤）
+  exclude?: string[]; // 不导入的文件名
 }
 
 
