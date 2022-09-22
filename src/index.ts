@@ -53,7 +53,7 @@ export const imports = (...options: (dirImportOpts | PresetName)[]): (ImportsMap
         }
         else if (["const", "let", "function", ""].includes(key)) {
           name.startsWith("{")
-            ? result.push(...name.replaceAll(/[,{}]|(default|[\w\d]+) as /g, "").trim().split(/[\s]/))
+            ? result.push(...name.replace(/[,{}]|(default|[\w\d]+) as /g, "").trim().split(/[\s]/))
             : result.push(name.trim());
         }
         else {
